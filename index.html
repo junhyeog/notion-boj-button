@@ -92,6 +92,7 @@
       if (el.value) document.getElementById("bojForm").action = "https://www.acmicpc.net/problem/" + el.value.toString();
       else document.getElementById("bojForm").action = "https://www.acmicpc.net/";
 
+      if (el.value < 0) document.getElementById("bojForm").action = "https://alkor.kr/shgap";
       const temp = document.createElement("div");
       temp.innerText = el.value ? el.value : "1000";
       const virtual = document.getElementById("container").appendChild(temp);
