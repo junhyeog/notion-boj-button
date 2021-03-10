@@ -11,9 +11,12 @@
   <style type="text/css">
     body {
       position: relative;
+      font-size: 10vw;
+    }
+
+    #container {
       color: #2980b9;
-      font-size: 20px;
-      letter-spacing: 0.25rem;
+      letter-spacing: 0.5rem;
       font-family: 'Montserrat', 'sans-serif';
     }
 
@@ -59,7 +62,7 @@
 
 
     input[type="number"] {
-      width: 63px;
+      width: 10px;
       padding: 0rem;
     }
 
@@ -85,10 +88,13 @@
   <script>
     function handleOnInput(el) {
       if (el.value.length > el.maxLength) el.value = el.value.slice(0, el.maxLength);
-      document.getElementById("bojForm").action = "https://www.acmicpc.net/problem/" + el.value.toString();
+
+      if (el.value) document.getElementById("bojForm").action = "https://www.acmicpc.net/problem/" + el.value.toString();
+      else document.getElementById("bojForm").action = "https://www.acmicpc.net/";
+
       const temp = document.createElement("div");
       temp.innerText = el.value ? el.value : "1000";
-      const virtual = document.body.appendChild(temp);
+      const virtual = document.getElementById("container").appendChild(temp);
       virtual.style.width = 'min-content';
       console.log(virtual.offsetWidth);
       el.style.width = virtual.offsetWidth.toString() + "px";
@@ -96,13 +102,23 @@
 
     }
   </script>
-  <form id="bojForm" target="_blank" action="https://www.acmicpc.net/problem/">
-    <a href="https://www.acmicpc.net/" target="_blank">BOJ/&#60;</a>
-    <input id="problemNum" autoComplete="off" type="number" placeholder="1000" maxlength="7"
-      oninput="handleOnInput(this)"></input>
-    <input type="submit" value=">"></input>
-  </form>
-
+  <div id="container">
+    <form id="bojForm" target="_blank" action="https://www.acmicpc.net/">
+      <a href="https://www.acmicpc.net/" target="_blank">BOJ/&#60;</a>
+      <input id="problemNum" autoComplete="off" type="number" placeholder="1000" maxlength="7"
+        oninput="handleOnInput(this)"></input>
+      <input type="submit" value=">"></input>
+    </form>
+  </div>
+  <script>
+    const temp = document.createElement("div");
+    temp.innerText = "1000";
+    const virtual = document.getElementById("container").appendChild(temp);
+    virtual.style.width = 'min-content';
+    console.log(virtual.offsetWidth);
+    document.getElementById("problemNum").style.width = virtual.offsetWidth.toString() + "px";
+    temp.remove();
+  </script>
 </body>
 
 </html>
