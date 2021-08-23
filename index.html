@@ -16,11 +16,10 @@
       font-size: 5vw;
       margin: 0 auto;
       width: fit-content;
-      background-color: white;
+      background-color: #fff;
     }
 
     #container {
-      background-color: white;
       color: #2980b9;
       letter-spacing: 0.5rem;
       font-family: 'Montserrat', 'sans-serif';
@@ -92,6 +91,7 @@
 
 <body>
   <script>
+    document.body.style.background=document.body.classList.value.includes('dark')?'#2f3437':'#fff';
     function handleOnInput(el) {
       if (el.value.length > el.maxLength) el.value = el.value.slice(0, el.maxLength);
 
